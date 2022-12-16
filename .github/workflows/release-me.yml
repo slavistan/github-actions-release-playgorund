@@ -18,6 +18,5 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: package.json
-          bodyFile: "body.md"
           tag: "main"
           commit: "main"
