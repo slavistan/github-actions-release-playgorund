@@ -1,6 +1,7 @@
 name: Releases
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - "*"
@@ -8,11 +9,15 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v2
+      - run: |
+          my_version="$(cat package.json | jq -r '.version')"
+          echo "MY_VERSION=$my_version" >>"$GITHUB_ENV"
+
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: "release.tar.gz,foo/*.txt"
+          artifacts: package.json
           bodyFile: "body.md"
+          tag: "main"
+          commit: "main"
