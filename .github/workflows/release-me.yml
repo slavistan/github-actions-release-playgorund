@@ -21,5 +21,3 @@ jobs:
       - uses: ncipollo/release-action@v1
         with:
           artifacts: package.json
-          tag: "main"
-          commit: "main"
