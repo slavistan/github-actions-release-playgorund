@@ -8,13 +8,11 @@ jobs:
   build:
     runs-on: windows-latest
     steps:
-      - uses: docker://pandoc/core
-        with:
-          args: "--help" # gets appended to pandoc command
-          # args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
+      - run: choco install --yes pandoc
+      - run: pandoc --standalone --embed-resources --output README.html README.md
 
-      # - uses: ncipollo/release-action@v1
-      #   with:
-      #     tag: "v0.1"
-      #     artifacts: README.html
-      #     allowUpdates: true
+      - uses: ncipollo/release-action@v1
+        with:
+          tag: "v0.1"
+          artifacts: README.html
+          allowUpdates: true
