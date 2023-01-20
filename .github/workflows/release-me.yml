@@ -10,9 +10,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-        mkdir yeah
-        choco install --yes pandoc
-        pandoc --standalone --embed-resources --output=./yeah/README.html README.md
+          mkdir yeah
+          choco install --yes pandoc
+          pandoc --standalone --embed-resources --output=./yeah/README.html README.md
 
       - uses: ncipollo/release-action@v1
         with:
