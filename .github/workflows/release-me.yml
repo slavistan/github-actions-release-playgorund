@@ -6,17 +6,13 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Compile README.md to README.html
-        uses: docker://pandoc/core
+      - uses: docker://pandoc/core
         with:
-          # args: "--help" # gets appended to pandoc command
-          args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
+          args: "--help"
 
-      - uses: ncipollo/release-action@v1
-        with:
-          tag: "v0.1"
-          artifacts: README.html
-          allowUpdates: true
+      # - uses: ncipollo/release-action@v1
+      #   with:
+      #     tag: "v0.1"
+      #     artifacts: README.html
+      #     allowUpdates: true
