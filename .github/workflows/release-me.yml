@@ -12,7 +12,9 @@ jobs:
       - name: Compile README.md to README.html
         uses: docker://pandoc/core:2.19
         with:
-          args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
+          args: "--help" # gets appended to pandoc command
+          # args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
+
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: README.html
+          artifacts: README.md
