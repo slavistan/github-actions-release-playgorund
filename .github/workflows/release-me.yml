@@ -3,8 +3,6 @@ name: Releases
 on:
   workflow_dispatch:
   push:
-    branches:
-      - '*'
 
 jobs:
   build:
@@ -14,8 +12,8 @@ jobs:
       - name: Compile README.md to README.html
         uses: docker://pandoc/core
         with:
-          args: "--help" # gets appended to pandoc command
-          # args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
+          # args: "--help" # gets appended to pandoc command
+          args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
 
       - uses: ncipollo/release-action@v1
         with:
