@@ -3,21 +3,16 @@ name: Releases
 on:
   workflow_dispatch:
   push:
-    tags:
-      - "v*"
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v2
-      - run: |
-          my_version="$(cat package.json | jq -r '.version')"
-          echo "MY_VERSION=$my_version" >>"$GITHUB_ENV"
-
-# Check if release exists
-# Check if release version equals npm registry version
-
+      - uses: actions/checkout@v3
+      - name: Compile README.md to README.html
+        uses: docker://pandoc/core:2.19
+        with:
+          args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
       - uses: ncipollo/release-action@v1
         with:
-          artifacts: package.json
+          artifacts: README.html
