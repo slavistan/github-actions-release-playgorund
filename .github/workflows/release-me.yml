@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: choco install --yes pandoc
-      - run: pandoc --standalone --embed-resources --output README.html README.md
+      - run: pandoc --standalone --embed-resources --output=README.html README.md
 
       - uses: ncipollo/release-action@v1
         with:
