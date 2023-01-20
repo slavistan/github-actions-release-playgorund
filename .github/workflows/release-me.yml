@@ -9,11 +9,13 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
-      - run: choco install --yes pandoc
-      - run: pandoc --standalone --embed-resources --output=README.html README.md
+      - run: |
+        mkdir yeah
+        choco install --yes pandoc
+        pandoc --standalone --embed-resources --output=./yeah/README.html README.md
 
       - uses: ncipollo/release-action@v1
         with:
           tag: "v0.1"
-          artifacts: README.html
+          artifacts: yeah/README.html
           allowUpdates: true
