@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Compile README.md to README.html
-        uses: docker://pandoc/core:2.19
+        uses: docker://pandoc/core
         with:
           args: "--help" # gets appended to pandoc command
           # args: "--standalone --embed-resources --output README.html README.md" # gets appended to pandoc command
