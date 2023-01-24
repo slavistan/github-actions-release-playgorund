@@ -9,7 +9,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: echo hi
-        shell: zsh
+        shell: bash
       - uses: actions/checkout@v3
       - run: winget --help
       # - run: |
