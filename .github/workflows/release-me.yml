@@ -10,12 +10,12 @@ jobs:
     steps:
       - run: |
           echo hi
-          apt install -y pandoc
+          sudo apt install -y pandoc
           mkdir yeah
           pandoc --standalone --embed-resources --output=./yeah/README.html README.md
 
       - uses: ncipollo/release-action@v1
         with:
-          tag: "v0.0.4"
+          tag: "v0.0.5"
           artifacts: yeah/README.html
           allowUpdates: true
